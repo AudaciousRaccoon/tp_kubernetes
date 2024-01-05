@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: tp-ingress
+  labels:
+    name: tp-ingress
+  annotations:
+    INGRESS.kubernetes.io/rewrite-target: /
+
+spec:
+  rules:
+  - host: tp.nous
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: tp-service
+            port: 
+              number: 80
